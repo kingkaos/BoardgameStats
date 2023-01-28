@@ -1,0 +1,7 @@
+# private files
+.env
+
+# development
+.venv/
+
+__pycache__/
