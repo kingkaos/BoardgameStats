@@ -1,6 +1,9 @@
+from pathlib import Path
 from decouple import config
 
 SECRET_KEY = config('SECRET_KEY')
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -9,6 +12,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bgs.apps.BgsConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
