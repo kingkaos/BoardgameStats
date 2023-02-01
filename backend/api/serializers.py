@@ -1,5 +1,5 @@
 from rest_framework import routers, serializers, viewsets
-from .models import  Boardgame
+from .models.boardgame import  Boardgame
 
 
 class BoardgameSerializer(serializers.HyperlinkedModelSerializer):

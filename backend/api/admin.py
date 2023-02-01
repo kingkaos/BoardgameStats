@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Boardgame
+from .models.boardgame import Boardgame
 
 # Register your models here.
 
