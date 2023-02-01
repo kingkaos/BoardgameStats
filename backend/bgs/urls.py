@@ -1,8 +1,7 @@
-from django.contrib import admin
-from django.urls import path, include
-
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('api/', include('bgs.urls')),
-    path('admin/', admin.site.urls),
+    path('boardgames/', views.BoardgameList.as_view(), name='boardgame-list'),
+    path('', views.api_root),
 ]
