@@ -9,14 +9,17 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-from .serializers import BoardgameSerializer, UserSerializer
+from .serializers import BoardgameSerializer, StatsSerializer, UserSerializer
 from .models.boardgame import Boardgame
+from .models.stats import Stats
 from .models.users import User
+
 
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
         'boardgames': reverse('boardgame-list', request=request, format=format),
+        'stats': reverste('stats-list', request=request, format=format),
         'users': reverse('user-list', request=request, format=format),
         })
 
@@ -46,3 +49,15 @@ def users(request):
         serializer = UserSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+
+class StatsList(generics.ListCreateAPIView):
+    queryset = Stats.objects.all()
+    serializer_class = StatsSerializer
+
+
+@csrf_exempt
+def stats(request):
+    if (request.method == 'GET'):
+        stats = Stats.objects.all()
+        serializer = StatsSerializer(stats, many=True)
+        return JsonResponse(serializer.data, safe=False)

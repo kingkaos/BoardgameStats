@@ -1,5 +1,6 @@
 from rest_framework import routers, serializers, viewsets
 from .models.boardgame import  Boardgame
+from .models.stats import Stats
 from .models.users import User
 
 
@@ -15,3 +16,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         app_label = 'user'
         model = User
         fields = ['id', 'nick_name']
+
+
+class StatsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        app_label = 'stats'
+        model = Stats
+        fields = ['id', 'played_on']
