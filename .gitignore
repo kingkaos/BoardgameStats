@@ -8,3 +8,5 @@ migrations/
 db.sqlite3
 
 __pycache__/
+
+package-lock.json
