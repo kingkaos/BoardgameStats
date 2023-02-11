@@ -2,7 +2,6 @@ from django.shortcuts import render, reverse
 
 from rest_framework import generics
 from rest_framework.parsers import JSONParser
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 
 from rest_framework.decorators import api_view
@@ -29,7 +28,7 @@ class BoardgameList(generics.ListCreateAPIView):
     serializer_class = BoardgameSerializer
 
 
-@csrf_exempt
+@api_view(['GET'])
 def boardgames(request):
     if (request.method == 'GET'):
         boardgames = Boardgame.objects.all()
@@ -42,7 +41,7 @@ class UserList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
 
-@csrf_exempt
+@api_view(['GET'])
 def users(request):
     if (request.method == 'GET'):
         users = User.objects.all()
@@ -55,7 +54,7 @@ class StatsList(generics.ListCreateAPIView):
     serializer_class = StatsSerializer
 
 
-@csrf_exempt
+@api_view(['GET'])
 def stats(request):
     if (request.method == 'GET'):
         stats = Stats.objects.all()
