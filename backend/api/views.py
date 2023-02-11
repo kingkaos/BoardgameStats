@@ -19,7 +19,7 @@ from .models.users import User
 def api_root(request, format=None):
     return Response({
         'boardgames': reverse('boardgame-list', request=request, format=format),
-        'stats': reverste('stats-list', request=request, format=format),
+        'stats': reverse('stats-list', request=request, format=format),
         'users': reverse('user-list', request=request, format=format),
         })
 
@@ -35,7 +35,7 @@ def boardgames(request):
         boardgames = Boardgame.objects.all()
         serializer = BoardgameSerializer(boardgames, many=True)
         return JsonResponse(serializer.data, safe=False)
-
+    
 
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
