@@ -8,7 +8,11 @@ class BoardgameSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         app_label = 'boardgame'
         model = Boardgame
-        fields = ['id', 'title', 'description']
+        fields = [
+            'id', 
+            'title', 
+            'description'
+        ]
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
