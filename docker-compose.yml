@@ -3,6 +3,15 @@ version: '3'
 services:
   backend:
     build: ./backend
+    environment:
+      - SECRET_KEY=development_key
+      - DJANGO_SETTINGS_MODULE=backend.settings.development
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=boardgame_db
+      - SQL_USER=root
+      - SQL_PASSWORD=root
+      - SQL_HOST=db
+      - SQL_PORT=5432
     command: python manage.py runserver 0.0.0.0:8000 --settings=backend.settings.development
     volumes:
       - ./backend:/usr/src/backend/

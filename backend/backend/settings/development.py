@@ -1,7 +1,5 @@
 import os
 
-from decouple import config
-
 from .base import *
 
 
@@ -13,27 +11,27 @@ ALLOWED_HOSTS = ['*']
 # default value (sqlite3 database) are used.
 DATABASES = {
     'default': {
-        'ENGINE': config(
-            'SQL_ENGINE', 
+        'ENGINE': os.environ.setdefault(
+            'SQL_ENGINE',
             'django.db.backends.sqlite3'
         ),
-        'NAME': config(
+        'NAME': os.environ.setdefault(
             'SQL_DATABASE',
-            BASE_DIR / 'db.sqlite3'
+            f'{BASE_DIR}/db.sqlite3'
         ),
-        'USER': config(
+        'USER': os.environ.setdefault(
             'SQL_USER',
             ''
         ),
-        'PASSWORD': config(
+        'PASSWORD': os.environ.setdefault(
             'SQL_PASSWORD',
             ''
         ),
-        'HOST': config(
+        'HOST': os.environ.setdefault(
             'SQL_HOST',
             ''
         ),
-        'PORT': config(
+        'PORT': os.environ.setdefault(
             'SQL_PORT',
             ''
         )
